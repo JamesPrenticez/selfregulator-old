@@ -9,7 +9,7 @@
   "scripts": {
     "client": "webpack-dev-server --hot --inline",
     "dev": "run-p dev:client dev:server",
-    "dev:client": "webpack --watch",
+    "dev:client": "webpack",
     "dev:server": "nodemon server",
     "start": "run-s build server",
     "build": "webpack",
