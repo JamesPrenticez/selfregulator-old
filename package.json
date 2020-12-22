@@ -9,12 +9,13 @@
   "scripts": {
     "client": "webpack-dev-server --hot --inline",
     "dev": "run-p dev:client dev:server",
-    "dev:client": "webpack",
+    "dev:client": "webpack --watch",
     "dev:server": "nodemon server",
     "start": "run-s build server",
     "build": "webpack",
     "server": "node server",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "lint": "eslint ."
   },
   "babel": {
     "presets": [
@@ -42,18 +43,20 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
-    "@testing-library/react": "^11.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^25.3.0",
     "babel-loader": "^8.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "7.9.0",
+    "eslint-config-eda": "0.1.4",
     "jest": "^25.3.0",
-    "nock": "^13.0.4",
     "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
-    "webpack": "^5.11.0",
+    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
   }
