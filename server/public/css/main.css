@@ -1,0 +1,162 @@
+/*---------- All ---------*/
+* {
+  margin:0;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+/*---------- Headings ---------*/
+h1{
+  line-height: "";  
+  display: inline-block;
+}
+
+h2{
+  line-height: 5px;  
+  display: inline-block;
+}
+
+h4{
+  display: inline-block;
+}
+
+p{
+  display: inline-block;
+}
+/*---------- Body ---------*/
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  background-color: #f1f1f1;
+  background-image: url('../img/background/spikes.png') ;
+}
+
+/*---------- Header ---------*/
+header{
+  width: 100%;
+  height: 100px;
+  margin: auto;
+  background-color: #EC2027;
+}
+
+.title{
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 5px;
+  font-size: 4em;
+}
+
+/*---------- Footer ---------*/
+footer{
+  width: 100%;
+  height: 100px;
+  background-color: #EC2027;
+  position: inherit;
+  bottom:0;
+}
+/*---------- Nav ---------*/
+nav{
+  text-align: right;
+  position: sticky;
+  top: 0;
+  height: 50px;
+  width: 100%;
+  background-color: black;
+  overflow: hidden;
+  z-index: 1;
+  padding-right: 2%;
+  }
+
+nav a {
+  display: inline-flex;
+  color: #f2f2f2;
+  text-align: right;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+nav a:hover{
+  color: #EC2027;
+  cursor: pointer;
+}
+
+nav a.active{
+  color:  #EC2027;
+  text-decoration: none;
+}
+
+/*---------- Main ----------*/
+main{
+  height: 100VH;
+  width: 100VW;
+}
+
+/*---------- Main Container ----------*/
+.mainContainer {
+  background-color: white;
+  margin: 5px auto;
+  border-radius: 5px;
+  height: auto;
+  width: 80%;
+  padding: 2%;
+  border: 1px solid;
+  box-shadow: 5px 10px 8px 10px #888888;
+}
+
+/*---------- Sidebar ---------*/
+/* The sidebar menu */
+.sidebar {
+  height: 100%;
+  width: 15VW;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: black;
+  overflow-x: hidden;
+  padding-top: 20px;
+  margin-top: 50px;
+}
+
+.sidebar a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.sidebar a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+.dropdown-btn.active {
+  background-color: green;
+  color: white;
+}
+
+.sidebar .dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
