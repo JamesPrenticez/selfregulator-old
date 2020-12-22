@@ -10,6 +10,7 @@ import Contact from './Contact'
 const App = () => {
   return (
     <>
+          <div className="logo">Self Regulator</div>
       <Router>
         <nav>
           <NavLink to="/homepage">Homepage</NavLink>
