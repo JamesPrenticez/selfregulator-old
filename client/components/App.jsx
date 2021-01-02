@@ -10,8 +10,8 @@ import Contact from './Contact'
 const App = () => {
   return (
     <>
-          <div className="logo">Self Regulator</div>
       <Router>
+          <div className="logo">Self Regulator</div>
         <nav>
           <NavLink to="/homepage">Homepage</NavLink>
           <NavLink to="/course">Course</NavLink>

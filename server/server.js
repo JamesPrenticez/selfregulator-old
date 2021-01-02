@@ -13,5 +13,5 @@ server.use(express.static(path.join(__dirname, './public')))
 module.exports = server
 
 // Routes
-//server.use('/', navRoutes)
+server.use('/', navRoutes)
 server.use('/', taskRoutes)
