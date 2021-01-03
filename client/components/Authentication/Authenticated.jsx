@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { isAuthenticated } from '../../../node_modules/authenticare/client'
+import { isAuthenticated } from 'authenticare/client'
 
 export function IfAuthenticated ({ children }) {
   return isAuthenticated()

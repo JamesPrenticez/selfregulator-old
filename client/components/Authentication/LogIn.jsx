@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { isAuthenticated, signIn } from '../../../node_modules/authenticare/client'
+import { isAuthenticated, signIn } from 'authenticare/client'
 import { baseApiUrl as baseUrl } from '../../config'
 import { IfNotAuthenticated } from './Authenticated'
 
