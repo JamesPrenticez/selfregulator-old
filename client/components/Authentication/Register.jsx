@@ -54,13 +54,26 @@ function Register ({ dispatch }) {
   }
 
   return (
-    <div className="Register">
-      <input type='email' role='email' name='email' placeholder='example@gmail.com' onChange={emailHandler}></input>
-      <input type='password' role='password' name='password' placeholder='password' onChange={passwordHandler}></input>
-      <input type='password' role='confirmPassword' name='confirmPassword' placeholder='confirm password' onChange={confirmPasswordHandler}></input>
-      <button type="submit" onClick={submitHandler}>Register</button>
-      <br></br>
-      <a style={linkStyle} role='login' onClick={() => dispatch(changePage('LogIn'))}>Log In</a>
+    <div className="mainContainer">
+        <form className="registrationForm">
+            <fieldset>
+                <legend>Register an Account</legend>
+
+                <label for='email'>Email:</label>
+                <input type='text' role='email' name='email' placeholder='example@gmail.com' onChange={emailHandler}></input>
+
+                <label for='password'>Create Password:</label>
+                <input type='text' role='password' name='password' placeholder='password' onChange={passwordHandler}></input>
+
+                <label for='confirmPassword'>Confrim Password:</label>
+                <input type='text' role='confirmPassword' name='confirmPassword' placeholder='confirm password' onChange={confirmPasswordHandler}></input>
+                <br>
+                </br>
+
+                <input type="submit" value="Submit" onClick={submitHandler}></input>
+                <a style={linkStyle} role='login' onClick={() => dispatch(changePage('LogIn'))}>Log In</a>
+            </fieldset>
+        </form>
     </div>
   )
 }

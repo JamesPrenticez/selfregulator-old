@@ -157,7 +157,7 @@ main {
 /*---------- Main Container ----------*/
 .mainContainer {
   background-color: white;
-  margin: 5VH;
+  margin: 5VH auto;
   border-radius: 5px;
   height: auto;
   width: 75VW;
@@ -224,6 +224,57 @@ main {
 .fa-caret-down {
   float: right;
   padding-right: 8px;
+}
+
+/*---------- Registration Form ----------*/
+.registrationForm legend{
+  color: black;
+  font-size: 23px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 23px;
+  display: inline-block;
+}
+
+.registrationForm input[type=text], select, textarea{
+  /*select*/
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  /*textarea*/
+  transition: all 0.30s ease-in-out;
+  outline: none;
+  border: 1px solid #DDDDDD;
+}
+
+.registrationForm input[type=text]:focus, textarea:focus{
+  box-shadow: 0 0 5px var(--offBlack);
+  border: 1px solid var(--offBlack);
+}
+
+.registrationForm input[type=submit]{
+  width: 100%;
+  background-color: black;
+  color: var(--terminalGreen);
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.registrationForm input[type=submit]:hover{
+  color: black;
+  background-color: var(--terminalGreen);
+}
+
+.registrationForm label{
+  font-weight: bold;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
