@@ -1,7 +1,10 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
+import currentPage from './currentPage'
+import addUserInfoReducer from './addUserInfo'
 
 const reducers = combineReducers({
-    test: () => (true)
+  currentPage,
+  addUserInfoReducer
 })
 
 export default reducers

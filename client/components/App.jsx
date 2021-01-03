@@ -6,6 +6,8 @@ import Homepage from './Homepage'
 import Course from './Course'
 import About from './About'
 import Contact from './Contact'
+import LogIn from './Authentication/LogIn'
+import Register from './Authentication/Register'
 
 const App = () => {
   return (
@@ -17,12 +19,16 @@ const App = () => {
           <NavLink to="/course">Course</NavLink>
           <NavLink to="/about">About Me</NavLink>
           <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/register">Register</NavLink>
+          <NavLink to="/login">Log In</NavLink>
         </nav>
         <main>
           <Route path="/homepage" component={Homepage} />
           <Route path="/course" component={Course} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
+          <Route path="/login" component={LogIn} />
+          <Route path="/register" component={Register} />
         </main>
       </Router>
     </>
