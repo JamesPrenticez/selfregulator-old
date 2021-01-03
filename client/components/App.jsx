@@ -10,9 +10,9 @@ import Contact from './Contact'
 const App = () => {
   return (
     <>
-          <div className="logo">Self Regulator</div>
       <Router>
         <nav>
+          <div className="logo"></div>
           <NavLink to="/homepage">Homepage</NavLink>
           <NavLink to="/course">Course</NavLink>
           <NavLink to="/about">About Me</NavLink>
