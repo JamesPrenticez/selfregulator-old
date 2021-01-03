@@ -18,7 +18,7 @@
     "lint": "eslint .",
     "migrate": "npx knex migrate:latest",
     "seed": "npx knex seed:run",
-    "reset": "run-s migrate seed",
+    "resetdb": "run-s migrate seed",
     "postinstall": "run-s migrate seed build"
   },
   "babel": {
