@@ -33,7 +33,7 @@ export default class CourseSidebar extends React.Component {
                     <div className="dropdown">
                         <button className="dropdown-btn">Week 1<FaCaretDown /></button>
                             <div className="dropdown-container" style={{display: 'none'}}>
-                                <a href="#">Link 1</a>
+                                <Link to={`/course/week1/Drugs`}>Drugs</Link>
                                 <a href="#">Link 2</a>
                                 <a href="#">Link 3</a>
                         </div>
