@@ -11,7 +11,9 @@ const App = () => {
   return (
     <>
       <Router>
-          <div className="logo">Self Regulator</div>
+        <header>
+          <h1 style={{color: 'white'}}>Self Regulator</h1>
+        </header>
         <nav>
           <NavLink to="/homepage">Homepage</NavLink>
           <NavLink to="/course">Course</NavLink>
