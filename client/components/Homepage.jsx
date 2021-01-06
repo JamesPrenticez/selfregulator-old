@@ -7,7 +7,9 @@ export default class Homepage extends React.Component {
         return (
             <>
                 <Header />
+                <div className="mainContainer">
                 <h1>Homepage</h1>
+                </div>
                 <Footer />
             </>
         )

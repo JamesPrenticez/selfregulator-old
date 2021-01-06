@@ -1,7 +1,7 @@
 import React from 'react'
 import {FaCaretDown} from 'react-icons/fa'
 
-export default class Sidebar extends React.Component {
+export default class CourseSidebar extends React.Component {
     componentDidMount() {
         this.dropDown()
     }
@@ -25,13 +25,9 @@ export default class Sidebar extends React.Component {
         };
     }
 
-
-
     render() {
         return (
             <>
-                <h1>Course</h1>
-
                 <div className="sidebar">
                     {/*---------- Week 1---------- */}
                     <div className="dropdown">
