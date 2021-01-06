@@ -1,4 +1,5 @@
 import React from 'react'
+import Form from './Form'
 
 function AboutMe() {
 
@@ -8,7 +9,10 @@ function AboutMe() {
 
     return (
         <>
+        <div className='mainContainer'>
             <h1>About Me</h1>
+            <Form/>
+        </div>
         </>
     )
 }

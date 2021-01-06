@@ -93,7 +93,7 @@ nav a.active{
   left: 0;
   z-index: 10000;
   color: white;
-  font-size: 50px;
+  font-size: 40px;
 
 }
 /*---------- Main ----------*/
@@ -125,7 +125,6 @@ main{
   left: 0;
   background-color: black;
   overflow-x: hidden;
-  padding-top: 20px;
   margin-top: 50px;
 }
 
