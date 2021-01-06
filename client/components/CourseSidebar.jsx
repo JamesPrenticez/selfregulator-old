@@ -57,4 +57,3 @@ export default class Sidebar extends React.Component {
         )
     }
 }
-

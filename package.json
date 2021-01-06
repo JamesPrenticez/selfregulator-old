@@ -16,7 +16,11 @@
     "server": "node server",
     "test": "jest --watchAll",
     "test:coverage": "jest --coverage",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "migrate": "npx knex migrate:latest",
+    "seed": "npx knex seed:run",
+    "reset:db": "run-s migrate seed",
+    "postinstall": "run-s migrate seed build"
   },
   "babel": {
     "presets": [

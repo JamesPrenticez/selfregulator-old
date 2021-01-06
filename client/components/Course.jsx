@@ -1,12 +1,13 @@
 import React from 'react'
-import Sidebar from './Sidebar';
+import CourseSidebar from './CourseSidebar';
+import CourseContainer from './CourseContainer';
 
 export default class Course extends React.Component {
     render() {
         return (
             <>
-                <Sidebar/>
-                
+                <CourseSidebar/>     
+                <CourseContainer/>     
             </>
         )
     }
