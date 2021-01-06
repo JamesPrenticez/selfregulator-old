@@ -15,6 +15,7 @@
     "build": "webpack",
     "server": "node server",
     "test": "jest --watchAll",
+    "test:coverage": "jest --coverage",
     "lint": "eslint .",
     "migrate": "npx knex migrate:latest",
     "seed": "npx knex seed:run",
@@ -38,16 +39,14 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
-  "jest": {
-    "setupFiles": [
-      "./tests/setup.js"
-    ]
-  },
+  "jest": {},
   "dependencies": {
     "express": "^4.17.1",
-    "knex": "^0.21.15",
+    "knex": "^0.21.5",
+    "sqlite3": "^5.0.0",
     "npm-run-all": "^4.1.5",
-    "superagent": "^5.2.2",
+    "superagent": "^6.1.0",
+    "supertest": "^4.0.2"
     "pg": "^8.3.3"
   },
   "devDependencies": {
@@ -67,6 +66,8 @@
     "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
     "react-icons": "^4.1.0",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",

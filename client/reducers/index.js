@@ -1,7 +1,11 @@
 import {combineReducers} from 'redux'
 
-const reducers = combineReducers({
-    test: () => (true)
-})
+import usersReducer from './users'
+import tasksReducer from './tasks'
+import boxesReducer from './boxes'
 
-export default reducers
+export default combineReducers({
+    users: usersReducer,
+    tasks: tasksReducer,
+    boxes: boxesReducer,
+})
