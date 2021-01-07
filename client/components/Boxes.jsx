@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchBoxes} from '../api'
+import {getBoxes} from '../api'
 import {receiveBoxes} from '../actions'
 
 class Boxes extends React.Component {     
@@ -10,7 +10,7 @@ class Boxes extends React.Component {
         }
 
     componentDidMount() {
-        fetchBoxes()
+        getBoxes()
             .then(boxes => {
                 this.props.dispatch(receiveBoxes(boxes))
             })

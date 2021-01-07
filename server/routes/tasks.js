@@ -1,15 +1,23 @@
-  
 const express = require('express')
-const db = require('../db')
 const router = express.Router()
+const db = require('../db')
 
 module.exports = router
 
 //GET Tasks
-router.get('/api/tasks', (req, res) => {
+router.get('/api/v1/tasks', (req, res) => {
   db.getTasks()
     .then(tasks => {
       res.json({tasks: tasks})
+    })
+})
+
+//ADD Task
+router.post('/api/v1/tasks', (req, res) => {
+  let {name} = req.body
+    db.addTask({name})
+    .then((ids) => {
+      res.status(201).json({ id: ids[0] })
     })
 })
 
@@ -20,15 +28,5 @@ router.get('/boxes/:id', (req, res) => {
         .then(callback => {
           console.log(callback)
           res.send(callback)
-    })
-})
-
-//ADD Task
-router.post('/api/add/:id', (req, res) => {
-  const id = 1 //req.params.id
-  let {task} = req.body
-    db.addTask({task, id})
-    .then((ids) => {
-      res.status(201).json({ id: ids[0] })
     })
 })

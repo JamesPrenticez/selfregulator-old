@@ -38,6 +38,6 @@ function parse(stuff) {
 }
 
 //ADD Tasks
-function addTask({task, id}, db = database){
-  return db('tasks').insert({task}).where({id})
+function addTask({name}, db = database){
+  return db('tasks').insert({name})
 }

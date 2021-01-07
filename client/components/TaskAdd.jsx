@@ -1,37 +1,41 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { addTask } from '../api'
+import {connect} from 'react-redux'
 
-class JobAdd extends React.Component {
+import {setTasks} from '../actions'
+import {addTask, getTasks} from '../api'
+
+class TaskAdd extends React.Component {
+     //We need to make this a 'controlled form so we add state
     state = {
-		task: 'New Task',
-		boxes: [],		
+        name: ''    
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
     }
 
     submit = () => {
-		addTask(this.state.task, this.state.boxes)
+        //get addTask from api
+        addTask(this.state.name)
+            .then(() => {
+                this.setState({name: ''})
+                return getTasks()
+            })
+            .then((tasks) => {
+                this.props.dispatch(setTasks(tasks))
+            })
     }
-    
+
     render() {
-		return (
-			<>
-                {/* Change this */}
-                <form className="registrationForm">
-                    <fieldset>
-                        <legend>Add Task</legend>
-
-                        <label for='task'>New Task:</label>
-                        <input type='text' role='task' name='task' placeholder='meditate' onChange={console.log()}></input>
-                        <br>
-                        </br>
-
-                        <input type="submit" value="Submit" onClick={this.submit()}></input>
-
-                    </fieldset>
-                </form>
-            </>
+        return(
+        <>
+            <h2>Add Task</h2>
+            <input name='name' onChange={this.handleChange} value={this.state.name}/>
+            <button onClick={this.submit}>Create Task</button>
+        </>
         )
     }
 }
-
-export default connect()(JobAdd) 
+export default connect()(TaskAdd) 
