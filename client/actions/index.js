@@ -1,6 +1,7 @@
 export const RECEIVE_USERS = 'RECEIVE_USERS'
-export const RECEIVE_TASKS = 'RECEIVE_TASKS'
 export const RECEIVE_BOXES = 'RECEIVE_BOXES'
+export const ADD_TASK = 'ADD_TASKS' //Not needed?
+export const SET_TASKS = 'SET_TASKS'
 
 export const receiveUsers = (users) => {
   return {
@@ -9,11 +10,12 @@ export const receiveUsers = (users) => {
   }
 }
 
-export const receiveTasks = (tasks) => {
-  return {
-    type: RECEIVE_TASKS,
-    tasks
-  }
+
+export function setTasks(tasks) {
+    return ({
+        type: SET_TASKS,
+        tasks
+    })
 }
 
 export const receiveBoxes = (boxes) => {

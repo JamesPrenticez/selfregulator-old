@@ -4,10 +4,18 @@ module.exports = {
 
   development: {
     client: 'sqlite3',
-    useNullAsDefault: true,
+    useNullAsDefault: 'true',
     connection: {
       filename: './dev.sqlite3'
-    }
+    },
+  },
+
+  test: {
+    client: 'sqlite3',
+    useNullAsDefault: 'true',
+    connection: {
+      filename: ':memory:'
+    },
   },
 
   staging: {
@@ -23,7 +31,8 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations'
-    }
+    },
+    useNullAsDefault: 'true'
   },
 
   production: {
@@ -33,6 +42,7 @@ module.exports = {
       user:     'username',
       password: 'password'
     },
+    
     pool: {
       min: 2,
       max: 10
@@ -41,5 +51,4 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
 };

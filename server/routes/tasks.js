@@ -1,24 +1,32 @@
-  
 const express = require('express')
-const db = require('../db')
 const router = express.Router()
+const db = require('../db')
 
 module.exports = router
 
-//Get entire tasks db and display on page
-router.get('/api/tasks', (req, res) => {
+//GET Tasks
+router.get('/api/v1/tasks', (req, res) => {
   db.getTasks()
     .then(tasks => {
       res.json({tasks: tasks})
     })
 })
 
-//Get boxes as javascript values
+//ADD Task
+router.post('/api/v1/tasks', (req, res) => {
+  let {name} = req.body
+    db.addTask({name})
+    .then((ids) => {
+      res.status(201).json({ id: ids[0] })
+    })
+})
+
+//GET Boxes (parse as JSON values)
 router.get('/boxes/:id', (req, res) => { 
   const id = 1 //req.params.id  
   db.getBoxes(id)
         .then(callback => {
-        console.log(callback)
-        res.send(callback)
+          console.log(callback)
+          res.send(callback)
     })
 })

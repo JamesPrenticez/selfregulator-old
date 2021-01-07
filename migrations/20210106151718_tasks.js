@@ -2,7 +2,7 @@ exports.up = (knex, Promise) => {
     return knex.schema.createTable('tasks', (table) =>{
         table.integer('user_id').references('users.id')
         table.increments('id') 
-        table.string('task')
+        table.string('name')
         table.string('boxes')
     })
 };
