@@ -1,22 +1,26 @@
 const environment = process.env.NODE_ENV || 'development'
 const config = require('../knexfile')[environment]
-const connection = require('knex')(config)
+const database = require('knex')(config)
 
 module.exports = {
     getUsers,
     getTasks,
-    getBoxes
+    getBoxes,
+    addTask
 }
 
-function getUsers (db = connection) {
+//GET Users
+function getUsers (db = database) {
   return db('users').select()
 }
 
-function getTasks (db = connection) {
+//GET Tasks
+function getTasks (db = database) {
   return db('tasks').select()
 }
 
-function getBoxes (id = 1, db = connection){
+//Get Boxes
+function getBoxes (id = 1, db = database){
   return db('tasks')
     .select('boxes')
     .where('user_id', id)
@@ -31,4 +35,9 @@ function parse(stuff) {
     task.boxes = JSON.parse(task.boxes)
     return task
   }) 
+}
+
+//ADD Tasks
+function addTask({task, id}, db = database){
+  return db('tasks').insert({task}).where({id})
 }

@@ -3,10 +3,6 @@ import {connect} from 'react-redux'
 import {fetchBoxes} from '../api'
 import {receiveBoxes} from '../actions'
 
-// var WWW = 'neutral'
-
-// var balls = "1,2,2,3,34,4,4,5,5,5,5,99"
-// var sack = JSON.parse(balls, array)
 class Boxes extends React.Component {     
     state = {
             boxState: [],
@@ -19,7 +15,6 @@ class Boxes extends React.Component {
                 this.props.dispatch(receiveBoxes(boxes))
             })
             .then(()=>{
-
                 let boxArray = this.state.boxState.slice
                 boxArray = this.props.boxes
                 this.setState({boxState: boxArray})
