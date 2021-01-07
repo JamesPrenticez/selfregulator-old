@@ -17,3 +17,10 @@ export function fetchBoxes() {
         .get('/boxes/:id')
         .then(res => res.body)//maybe just res.body?
 }
+
+//ADD Job
+export function addTask(task, id){
+    return request.post('/api/add')
+        .send({task, id})
+        .then(res => res.body.id)
+}
