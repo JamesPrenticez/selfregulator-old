@@ -34,8 +34,8 @@ function getTasks (db = database) {
 // }
 
 //ADD Task
-function addTask({name}, db = database){
-  return db('tasks').insert({name})
+function addTask({name, boxes}, db = database){
+  return db('tasks').insert({name, boxes})
 }
 
 //DELETE Task

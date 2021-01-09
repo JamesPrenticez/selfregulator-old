@@ -9,7 +9,7 @@ class TaskEdit extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: props.task.name    
+            name: props.task.name     
         }
     }
 
@@ -29,7 +29,6 @@ class TaskEdit extends React.Component {
                 if (this.props.onEscape) this.props.onEscape()
                 break
         }
-
     }
 
     submit = () => {

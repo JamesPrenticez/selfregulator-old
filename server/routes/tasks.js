@@ -25,8 +25,8 @@ router.get('/api/v1/tasks', (req, res) => {
 
 //ADD Task
 router.post('/api/v1/tasks', (req, res) => {
-  let {name} = req.body
-    db.addTask({name})
+  let {name, boxes} = req.body
+    db.addTask({name, boxes})
     .then((ids) => {
       res.status(201).json({ id: ids[0] })
     })

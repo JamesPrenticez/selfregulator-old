@@ -7,7 +7,7 @@ import {addTask, getTasks} from '../api'
 class TaskAdd extends React.Component {
      //We need to make this a 'controlled form so we add state
     state = {
-        name: ''    
+        name: '',
     }
 
     handleChange = (event) => {
@@ -17,8 +17,8 @@ class TaskAdd extends React.Component {
     }
 
     submit = () => {
-        //get addTask from api
-        addTask(this.state.name)
+        const boxes = '["neutral","neutral","neutral","neutral","neutral"]'
+        addTask(this.state.name, boxes)
             .then(() => {
                 this.setState({name: ''})
                 return getTasks()

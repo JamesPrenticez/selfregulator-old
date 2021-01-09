@@ -6,18 +6,20 @@ export function getTasks() {
         .then(res => res.body.tasks)
 }
 
-//ADD Job
-export function addTask(name) {
+//ADD Task
+export function addTask(name, boxes) {
     return request.post('/api/v1/tasks')
-        .send({name})
+        .send({name, boxes})
         .then(res => res.body.id)
 }
 
+//Delete Task
 export function deleteTask(id) {
     return request.delete('/api/v1/tasks/' + id)
         .then(res => res.body)
 }
 
+//Edit Task
 export function editTask(id, name) {
     return request.patch('/api/v1/tasks/' + id)
         .send({name})
