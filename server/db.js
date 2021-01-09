@@ -3,15 +3,10 @@ const config = require('../knexfile')[environment]
 const database = require('knex')(config)
 
 module.exports = {
-    getUsers,
-    getTasks,
-    getBoxes,
-    addTask
-}
-
-//GET Users
-function getUsers (db = database) {
-  return db('users').select()
+  getTasks,
+  addTask,
+  deleteTask,
+  updateTask
 }
 
 //GET Tasks
@@ -19,25 +14,38 @@ function getTasks (db = database) {
   return db('tasks').select()
 }
 
-//Get Boxes
-function getBoxes (id = 1, db = database){
-  return db('tasks')
-    .select('boxes')
-    .where('user_id', id)
-    .then(parse)
-} 
+// Merge this with get tasks
+// //Get Boxes
+// function getBoxes (id = 1, db = database){
+//   return db('tasks')
+//     .select('boxes')
+//     .where('user_id', id)
+//     .then(parse)
+// } 
 
-// JSON.parse()
-function parse(stuff) {
-  console.log("stuff")
-  console.log(stuff)
-  return stuff.map(task => {
-    task.boxes = JSON.parse(task.boxes)
-    return task
-  }) 
-}
+// // JSON.parse()
+// function parse(stuff) {
+//   console.log("stuff")
+//   console.log(stuff)
+//   return stuff.map(task => {
+//     task.boxes = JSON.parse(task.boxes)
+//     return task
+//   }) 
+// }
 
-//ADD Tasks
+//ADD Task
 function addTask({name}, db = database){
   return db('tasks').insert({name})
+}
+
+//DELETE Task
+function deleteTask(id, db = database) {
+    if (!id) return Promise.reject('id must be specified')
+    return db('tasks').where({id}).delete()
+}
+
+//UPDATE Task
+function updateTask(id, name, db = database) {
+    if (!id) return Promise.reject('id must be specified')
+    return db('tasks').where({id}).update({name})
 }

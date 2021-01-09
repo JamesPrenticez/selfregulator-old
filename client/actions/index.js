@@ -1,15 +1,7 @@
-export const RECEIVE_USERS = 'RECEIVE_USERS'
-export const RECEIVE_BOXES = 'RECEIVE_BOXES'
-export const ADD_TASK = 'ADD_TASKS' //Not needed?
 export const SET_TASKS = 'SET_TASKS'
-
-export const receiveUsers = (users) => {
-  return {
-    type: RECEIVE_USERS,
-    users
-  }
-}
-
+export const ADD_TASK = 'ADD_TASKS'
+export const REMOVE_TASK = 'REMOVE_TASK'
+export const UPDATE_TASK = 'UPDATE_TASK'
 
 export function setTasks(tasks) {
     return ({
@@ -18,9 +10,16 @@ export function setTasks(tasks) {
     })
 }
 
-export const receiveBoxes = (boxes) => {
-  return {
-    type: RECEIVE_BOXES,
-    boxes
-  }
+export function removeTask(id) {
+    return ({
+        type: REMOVE_TASK,
+        id
+    })
+}
+
+export function updateTask(id, name) {
+    return ({
+        type: UPDATE_TASK,
+        id, name
+    })
 }

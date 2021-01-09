@@ -20,10 +20,10 @@ describe('Test getTasks function', () => {
 
 describe('Test addTask function', () => {
     test('creates a task for the specified user', () => {
-        addTask({task: 'jump for joy'}, {id: 0}, testDb)
+        addTask({name: 'jump for joy'}, testDb)
         .then(ids => {
             expect(ids[0] > 0).toBe(true)
-            return addTasks(testDb)
+            return addTask(testDb)
         })
         .then(tasks => {
             expect(tasks.length).toBe(4)
