@@ -38,9 +38,11 @@ h2 {
   line-height: 23px;
 }
 
+/* H1 & H2 are the same as H3 & H4 the difference being inline-block */
+
 h3 {
   color: black;
-  font-size: 17px;
+  font-size: 23px;
   font-style: normal;
   font-variant: normal;
   font-weight: 700;
@@ -50,7 +52,7 @@ h3 {
 
 h4 {
   color: black;
-  font-size: 14px;
+  font-size: 20px;
   font-style: normal;
   font-variant: normal;
   font-weight: 700;
@@ -225,7 +227,28 @@ main {
   float: right;
   padding-right: 8px;
 }
+/*---------- Row ----------*/
+.row {
+  height: auto;
+  margin: 10px;
+  border: red 3px solid;
+}
 
+/*---------- Boxes ----------*/
+.box {
+  display: inline-flex;
+  height: 50px;
+  width: 50px;
+  background-color: orange;
+  border: black 2px solid;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.box:hover {
+  background-color: yellow;
+  cursor: pointer;
+}
 /*---------- Registration Form ----------*/
 .registrationForm legend{
   color: black;

@@ -6,11 +6,16 @@ import {removeTask} from '../actions'
 import {deleteTask} from '../api'
 
 import TaskEdit from './TaskEdit'
+import TaskListItemBoxes from './TaskListItemBoxes'
 
 class TaskListItem extends React.Component {
-    state = {
-        showControls: false,
-        editing: false,
+    constructor(props){
+        super(props)
+
+        this.state = {
+            showControls: false,
+            editing: false
+        }
     }
 
     showControls = () => {
@@ -50,12 +55,11 @@ class TaskListItem extends React.Component {
     const editStyle = {color: 'orange', marginLeft: '7px', cursor: 'pointer'}
     const deleteStyle = {color: 'red', marginLeft: '7px', cursor: 'pointer'}
         return(
-            <li
+            <li className='row'
                 onMouseEnter={this.showControls}
                 onMouseLeave={this.hideControls}
-                style={{height: '45px'}}
             >
-                { editing ? <TaskEdit task={task} onEscape={this.hideEditForm}/> : task.name + ' ' + task.boxes}
+                { editing ? <TaskEdit task={task} onEscape={this.hideEditForm}/> : <TaskListItemBoxes task={task}/>}
 
                 { showControls ? <>
                     <FaEdit
