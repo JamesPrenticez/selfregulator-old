@@ -6,7 +6,7 @@ class TaskListItemBoxes extends React.Component {
         super(props)
 
         this.state = {
-            boxes: []
+            boxes: this.props.task.boxes
         }
     }
 
