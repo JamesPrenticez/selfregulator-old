@@ -8,7 +8,6 @@ import TaskListItem from './TaskListItem'
 
 class TaskList extends React.Component {
     componentDidMount() {
-        console.log('hi')
         getTasks()
         .then(tasks => {
             this.props.dispatch(setTasks(tasks))
