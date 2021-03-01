@@ -10,28 +10,25 @@ module.exports = {
 }
 
 //GET Tasks
-function getTasks (db = database) {
-  return db('tasks').select()
-}
+// function getTasks (db = database) {
+//   return db('tasks').select()
+// }
 
-// Merge this with get tasks
-// //Get Boxes
-// function getBoxes (id = 1, db = database){
-//   return db('tasks')
-//     .select('boxes')
-//     .where('user_id', id)
-//     .then(parse)
-// } 
+//Get Tasks and Boxes
+function getTasks (id = 1, db = database){
+  return db('tasks')
+    .select('name', 'boxes')
+    .where('user_id', id)
+    .then(parse)
+} 
 
 // // JSON.parse()
-// function parse(stuff) {
-//   console.log("stuff")
-//   console.log(stuff)
-//   return stuff.map(task => {
-//     task.boxes = JSON.parse(task.boxes)
-//     return task
-//   }) 
-// }
+function parse(stuff) {
+  return stuff.map(task => {
+    task.boxes = JSON.parse(task.boxes)
+    return task
+  }) 
+}
 
 //ADD Task
 function addTask({name, boxes}, db = database){

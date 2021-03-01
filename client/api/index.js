@@ -25,3 +25,4 @@ export function editTask(id, name) {
         .send({name})
         .then(res => res.body)
 }
+

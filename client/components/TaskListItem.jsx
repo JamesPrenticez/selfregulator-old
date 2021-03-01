@@ -46,6 +46,7 @@ class TaskListItem extends React.Component {
 
     render(){
     const {task} = this.props
+    console.log(task)
     const {showControls, editing} = this.state
     const editStyle = {color: 'orange', marginLeft: '7px', cursor: 'pointer'}
     const deleteStyle = {color: 'red', marginLeft: '7px', cursor: 'pointer'}
@@ -55,7 +56,20 @@ class TaskListItem extends React.Component {
                 onMouseLeave={this.hideControls}
                 style={{height: '45px'}}
             >
-                { editing ? <TaskEdit task={task} onEscape={this.hideEditForm}/> : task.name + ' ' + task.boxes}
+                {/* { editing ? <TaskEdit task={task} onEscape={this.hideEditForm}/> : task.name + ' ' + task.boxes} */}
+
+                { editing ? <TaskEdit task={task} onEscape={this.hideEditForm}/> : 
+                <>
+                    <div className='taskName'>{task.name}</div>
+                    
+                    <div className='box'>{task.boxes[0]}</div>
+                    <div className='box'>{task.boxes[1]}</div>
+                    <div className='box'>{task.boxes[2]}</div>
+                    <div className='box'>{task.boxes[3]}</div>
+                    <div className='box'>{task.boxes[4]}</div>
+                    
+                </>
+                }
 
                 { showControls ? <>
                     <FaEdit

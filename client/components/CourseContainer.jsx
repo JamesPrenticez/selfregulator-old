@@ -8,7 +8,6 @@ export default class CourseContainer extends React.Component {
         return (
             <>
                 <div className="courseContainer">
-                <h1>Welcome to the 28 day challenge</h1>
                 <TaskList/>
                 <TaskAdd/>
                 </div>

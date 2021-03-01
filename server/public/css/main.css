@@ -6,11 +6,12 @@
 }
 /*---------- All ---------*/
 * {
-  margin:0;
+  margin: 0;
   top: 0;
   left: 0;
   box-sizing: border-box;
-  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter",
+    "Lucida Typewriter", monospace;
 }
 
 ::selection {
@@ -81,13 +82,13 @@ blockquote {
 /*---------- Body ---------*/
 body {
   background-color: white;
-  background-image: url('../img/background/spikes.png') ;
+  background-image: url("../img/background/spikes.png");
 }
 
 /*---------- Header ---------*/
-header{
+header {
   width: 100%;
-  height: 5VH;
+  height: 5vh;
   margin: auto;
   background-color: black;
 }
@@ -98,7 +99,7 @@ footer {
   height: 100px;
   background-color: black;
   position: inherit;
-  bottom:0;
+  bottom: 0;
 }
 /*---------- Nav ---------*/
 nav {
@@ -106,12 +107,12 @@ nav {
   position: sticky;
   top: 0;
   z-index: 1;
-  height: 5VH;
+  height: 5vh;
   width: 100%;
   background-color: black;
   overflow: hidden;
   padding-right: 2%;
-  }
+}
 
 nav a {
   display: inline-flex;
@@ -136,31 +137,31 @@ nav a.active {
 .logo {
   background-image: url("/img/logos/Self Regulator White.png");
   background-repeat: no-repeat;
-  height: 5VH; /*50px*/
-  width: 40VW; /*400px*/
+  height: 5vh; /*50px*/
+  width: 40vw; /*400px*/
   position: fixed;
   top: 0;
-  left: 0.5VW;
+  left: 0.5vw;
   cursor: pointer;
 }
 
-.logo:hover{
+.logo:hover {
   background-image: url("/img/logos/Self Regulator Green.png");
 }
 
 /*---------- Main ----------*/
 main {
-  height: 100VH;
-  width: 100VW;
+  height: 100vh;
+  width: 100vw;
 }
 
 /*---------- Main Container ----------*/
 .mainContainer {
   background-color: white;
-  margin: 5VH auto;
+  margin: 5vh auto;
   border-radius: 5px;
   height: auto;
-  width: 75VW;
+  width: 75vw;
   padding: 2%;
   border: 1px solid;
   box-shadow: 5px 10px 8px 10px var(--offGray);
@@ -169,10 +170,10 @@ main {
 /*---------- Course Container ----------*/
 .courseContainer {
   background-color: white;
-  margin: 5VH 20VW;
+  margin: 5vh 20vw;
   border-radius: 5px;
   height: auto;
-  width: 75VW;
+  width: 75vw;
   padding: 2%;
   border: 1px solid;
   box-shadow: 5px 10px 8px 10px var(--offGray);
@@ -182,17 +183,18 @@ main {
 /* The sidebar menu */
 .sidebar {
   height: 100%;
-  width: 15VW;
+  width: 15vw;
   position: fixed;
   z-index: 0;
   top: 0;
   left: 0;
   background-color: black;
   overflow-x: hidden;
-  padding-top: 10VH;
+  padding-top: 10vh;
 }
 
-.sidebar a, .dropdown-btn {
+.sidebar a,
+.dropdown-btn {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -206,7 +208,8 @@ main {
   outline: none;
 }
 
-.sidebar a:hover, .dropdown-btn:hover {
+.sidebar a:hover,
+.dropdown-btn:hover {
   color: var(--terminalGreen);
 }
 
@@ -227,7 +230,7 @@ main {
 }
 
 /*---------- Registration Form ----------*/
-.registrationForm legend{
+.registrationForm legend {
   color: black;
   font-size: 23px;
   font-style: normal;
@@ -237,7 +240,9 @@ main {
   display: inline-block;
 }
 
-.registrationForm input[type=text], select, textarea{
+.registrationForm input[type="text"],
+select,
+textarea {
   /*select*/
   width: 100%;
   padding: 12px 20px;
@@ -247,17 +252,18 @@ main {
   border-radius: 4px;
   box-sizing: border-box;
   /*textarea*/
-  transition: all 0.30s ease-in-out;
+  transition: all 0.3s ease-in-out;
   outline: none;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
 }
 
-.registrationForm input[type=text]:focus, textarea:focus{
+.registrationForm input[type="text"]:focus,
+textarea:focus {
   box-shadow: 0 0 5px var(--offBlack);
   border: 1px solid var(--offBlack);
 }
 
-.registrationForm input[type=submit]{
+.registrationForm input[type="submit"] {
   width: 100%;
   background-color: black;
   color: var(--terminalGreen);
@@ -268,17 +274,60 @@ main {
   cursor: pointer;
 }
 
-.registrationForm input[type=submit]:hover{
+.registrationForm input[type="submit"]:hover {
   color: black;
   background-color: var(--terminalGreen);
 }
 
-.registrationForm label{
+.registrationForm label {
   font-weight: bold;
+}
+/*---------- Grid ----------*/
+.grid {
+  margin: 0 auto;
+  width: 60%;
+  display: grid;
+  grid-template:
+    "a" 75px
+    "a" 75px / 100%;
+  column-gap: 1px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/*---------- Task ----------*/
+.taskName {
+  display: inline-flex;
+  font-size: 23px;
+  font-weight: 800;
+  color: black;
+}
+
+/*---------- Box ----------*/
+
+.box {
+  background-color: beige;
+  display: inline-flex;
+  height: 50px;
+  width: 50px;
+  border: 2px solid black;
+  border-radius: 3px;
+  margin: 5px 5px 5px 5px;
+}
+
+.box:hover {
+  background-color: var(--terminalGreen);
+  cursor: pointer;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
