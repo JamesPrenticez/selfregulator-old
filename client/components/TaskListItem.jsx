@@ -51,7 +51,7 @@ class TaskListItem extends React.Component {
     const editStyle = {color: 'orange', marginLeft: '7px', cursor: 'pointer'}
     const deleteStyle = {color: 'red', marginLeft: '7px', cursor: 'pointer'}
         return(
-            <li
+            <tr
                 onMouseEnter={this.showControls}
                 onMouseLeave={this.hideControls}
                 style={{height: '45px'}}
@@ -59,31 +59,29 @@ class TaskListItem extends React.Component {
                 {/* { editing ? <TaskEdit task={task} onEscape={this.hideEditForm}/> : task.name + ' ' + task.boxes} */}
 
                 { editing ? <TaskEdit task={task} onEscape={this.hideEditForm}/> : 
-                <>
-                    <div className='taskName'>{task.name}</div>
-                    
-                    <div className='box'>{task.boxes[0]}</div>
-                    <div className='box'>{task.boxes[1]}</div>
-                    <div className='box'>{task.boxes[2]}</div>
-                    <div className='box'>{task.boxes[3]}</div>
-                    <div className='box'>{task.boxes[4]}</div>
-                    
+                <>     
+                        <td><div className='taskName' onClick={this.editTask}>{task.name}</div></td>
+                        <td><div className='box'>{task.boxes[0]}</div></td>
+                        <td><div className='box'>{task.boxes[1]}</div></td>
+                        <td><div className='box'>{task.boxes[2]}</div></td>
+                        <td><div className='box'>{task.boxes[3]}</div></td>
+                        <td><div className='box'>{task.boxes[4]}</div></td>
+                        <td>                
+                    { showControls ? <>
+                        {/* <FaEdit
+                            style={editStyle}
+                            onClick={this.editTask}
+                            role='button'  
+                        /> */}
+                        <FaMinusCircle
+                            style={deleteStyle}
+                            onClick={this.deleteTask}
+                            role='button'
+                        />
+                    </> : ''}</td>
                 </>
                 }
-
-                { showControls ? <>
-                    <FaEdit
-                        style={editStyle}
-                        onClick={this.editTask}
-                        role='button'  
-                    />
-                    <FaMinusCircle
-                        style={deleteStyle}
-                        onClick={this.deleteTask}
-                        role='button'
-                    />
-                </> : ''}
-            </li>
+            </tr>
         )
     }
 }

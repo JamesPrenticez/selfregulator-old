@@ -23,9 +23,20 @@ class TaskList extends React.Component {
         const {tasks} = this.props
         return (
         <>
-        <div className="taskList">
-            <ul className='grid'>{tasks.map(task => <TaskListItem key={task.id} task={task} />)}</ul>
-        </div>
+            <table id='tasksTable'>
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>M</th>
+                        <th>T</th>
+                        <th>W</th>
+                        <th>T</th>
+                        <th>F</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+            <tbody>{tasks.map(task => <TaskListItem key={task.id} task={task} />)}</tbody>
+</table>
        </>
         )
     }
