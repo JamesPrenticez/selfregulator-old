@@ -5,8 +5,9 @@ const db = require('../db')
 module.exports = router
 
 //GET Tasks
-router.get('/api/v1/tasks', (req, res) => {
-  db.getTasks()
+router.get('/api/v1/tasks/:user_id', (req, res) => {
+  let {user_id} = req.params
+  db.getTasks(user_id)
     .then(tasks => {
       res.json({tasks: tasks})
     })
@@ -24,9 +25,10 @@ router.get('/api/v1/tasks', (req, res) => {
 // })
 
 //ADD Task
-router.post('/api/v1/tasks', (req, res) => {
+router.post('/api/v1/tasks/:user_id', (req, res) => {
+  let {user_id} = req.params
   let {name, boxes} = req.body
-    db.addTask({name, boxes})
+    db.addTask({name, boxes, user_id})
     .then((ids) => {
       res.status(201).json({ id: ids[0] })
     })

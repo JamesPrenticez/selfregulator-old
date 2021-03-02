@@ -17,11 +17,12 @@ class TaskAdd extends React.Component {
     }
 
     submit = () => {
+        let user_id = 1
         const boxes = '["neutral","neutral","neutral","neutral","neutral"]'
-        addTask(this.state.name, boxes)
+        addTask(this.state.name, boxes, user_id)
             .then(() => {
                 this.setState({name: ''})
-                return getTasks()
+                return getTasks(user_id)
             })
             .then((tasks) => {
                 this.props.dispatch(setTasks(tasks))

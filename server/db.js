@@ -15,10 +15,10 @@ module.exports = {
 // }
 
 //Get Tasks and Boxes
-function getTasks (id = 1, db = database){
+function getTasks (user_id = 1, db = database){
   return db('tasks')
-    .select('name', 'boxes')
-    .where('user_id', id)
+    .select('name', 'boxes', 'id', 'user_id')
+    .where('user_id', user_id)
     .then(parse)
 } 
 
@@ -31,8 +31,10 @@ function parse(stuff) {
 }
 
 //ADD Task
-function addTask({name, boxes}, db = database){
-  return db('tasks').insert({name, boxes})
+function addTask({name, boxes, user_id}, db = database){
+  return db('tasks')
+  .insert({name, boxes, user_id})
+  .where('user_id', user_id)
 }
 
 //DELETE Task

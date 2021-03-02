@@ -9,7 +9,8 @@ class TaskEdit extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: props.task.name     
+            name: props.task.name,
+            user_id: props.task.user_id     
         }
     }
 
@@ -34,9 +35,11 @@ class TaskEdit extends React.Component {
     submit = () => {
         let {id} = this.props.task
         let {name} = this.state 
-        editTask(id, name)
+        let {user_id} = this.state
+        console.log(this.state)
+        editTask(id, name, user_id)
             .then(() => {
-                this.props.dispatch(updateTask(id, name))
+                this.props.dispatch(updateTask(id, name, user_id))
                 if (this.props.onEscape) this.props.onEscape()
             })
         }

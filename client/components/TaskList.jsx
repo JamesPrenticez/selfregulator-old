@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { BrowserRouter as Router, Switch, Route, Link, NavLink, useParams, Redirect } from "react-router-dom";
 import {setTasks} from '../actions'
 import {getTasks} from '../api'
 
@@ -8,7 +9,8 @@ import TaskListItem from './TaskListItem'
 
 class TaskList extends React.Component {
     componentDidMount() {
-        getTasks()
+        let user_id = 1
+         getTasks(user_id)
         .then(tasks => {
             this.props.dispatch(setTasks(tasks))
         })

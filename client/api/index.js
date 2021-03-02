@@ -1,15 +1,15 @@
 import request from 'superagent'
 
-export function getTasks() {
+export function getTasks(user_id) {
     return request  
-        .get('/api/v1/tasks')
+        .get('/api/v1/tasks/' + user_id)
         .then(res => res.body.tasks)
 }
 
 //ADD Task
-export function addTask(name, boxes) {
-    return request.post('/api/v1/tasks')
-        .send({name, boxes})
+export function addTask(name, boxes, user_id) {
+    return request.post('/api/v1/tasks/' + user_id)
+        .send({name, boxes, user_id})
         .then(res => res.body.id)
 }
 
