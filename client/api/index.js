@@ -26,3 +26,11 @@ export function editTask(id, name) {
         .then(res => res.body)
 }
 
+//Edit Boxes
+export function editBoxes(id, boxes) {
+    return request.patch('/api/v1/tasks/' + id)
+        .send({boxes})
+        .then(res => res.body)
+        .then(console.log('api'))
+}
+

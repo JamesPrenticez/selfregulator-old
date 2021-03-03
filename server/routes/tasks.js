@@ -52,8 +52,22 @@ router.delete('/api/v1/tasks/:id', (req, res) => {
 router.patch('/api/v1/tasks/:id', (req, res) => {
   let {id} = req.params
   if (!id) return res.status(400).send('no id specified')
-
   db.updateTask(Number(id), req.body.name)
+    .then(recordsUpdated => {
+      res.sendStatus(200)
+    })
+    .catch(error => {
+      res.sendStatus(500)
+    })
+})
+
+//UPDATE Boxes
+router.patch('/api/v1/tasks/:id', (req, res) => {
+  let {id} = req.params
+  let {boxes} = req.body.boxes
+  console.log(boxes)
+  if (!id) return res.status(400).send('no id specified')
+  db.updateBoxes(Number(id), boxes)
     .then(recordsUpdated => {
       res.sendStatus(200)
     })
