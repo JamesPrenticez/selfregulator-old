@@ -11,6 +11,10 @@ import {editBoxes} from '../api'
 
 import TaskEdit from './TaskEdit'
 
+const yellow = '#FEDD01'
+const green = '#39ff14'
+const red = '#DD01FE'
+
 class TaskListItem extends React.Component {
   constructor(props) {
     super(props);
@@ -22,30 +26,51 @@ class TaskListItem extends React.Component {
     };
   }
 
+    componentDidMount() {
+        for(let i = 0; i < document.getElementsByClassName('box').length; i++){
+        let id = document.getElementsByClassName('box')[i].id
+        this.changeColor(i, id)
+        }
+    }
+
     handleChange = (event) => {    
         this.setState({
             boxes: event.target.value
         })
     }
 
-    updateBoxesState = (i) => {
+    updateBoxesState = (i, id) => {
         let boxes = [...this.state.boxes]
-        if(boxes[i] === 'neutral'){
+           if(boxes[i] === 'neutral'){
+            document.getElementById(id).style.backgroundColor=green;
             boxes[i] = 'pass'
             this.setState({
                 boxes: boxes
             })
         }  else if(boxes[i] === 'pass'){
+            document.getElementById(id).style.backgroundColor=red;
             boxes[i] = 'fail'
             this.setState({
                 boxes: boxes
             })
         } else if(boxes[i] === 'fail'){
+            document.getElementById(id).style.backgroundColor=yellow;
             boxes[i] = 'neutral'
             this.setState({
                 boxes: boxes
             })
-        }
+    }
+        console.log(this.state.boxes)
+    }
+
+    changeColor = (i, id) => {
+            if(document.getElementsByClassName('box')[i].value == 'pass'){
+                document.getElementById(id).style.backgroundColor=green;
+            } else if (document.getElementsByClassName('box')[i].value == 'neutral'){
+                document.getElementById(id).style.backgroundColor=yellow;
+            } else if (document.getElementsByClassName('box')[i].value == 'fail'){
+                document.getElementById(id).style.backgroundColor=red;
+            } else document.getElementById(id).style.backgroundColor='black';
     }
 
     submit = () =>{
@@ -94,13 +119,13 @@ class TaskListItem extends React.Component {
     }
 
     render(){
+    const {id} = this.props.task
     const {task} = this.props
     const {editing} = this.state
     const deleteStyle = {color: 'red', marginLeft: '7px', cursor: 'pointer'}
         return(
-            <div
-                style={{height: '45px'}}
-            >
+            <div className='row'>
+
                 { editing ? <TaskEdit task={task} onEscape={this.hideEditForm}/> :
 
                 <>
@@ -110,46 +135,46 @@ class TaskListItem extends React.Component {
                 <input 
                     className='box'
                     name='name'
-                    id={0}
+                    id={id  + 'box0'}
                     value={this.state.boxes[0]}
                     onChange={() => this.handleChange()}
-                    onClick={() => this.updateBoxesState(0)}
+                    onClick={() => this.updateBoxesState(0, id + 'box0')}
                 />
                 {/*Box 1*/}
                 <input 
                     className='box'
                     name='name'
-                    id={1}
+                    id={id + 'box1'}
                     value={this.state.boxes[1]}
                     onChange={() => this.handleChange()}
-                    onClick={() => this.updateBoxesState(1)}
+                    onClick={() => this.updateBoxesState(1, id + 'box1')}
                 />
                 {/*Box 2*/}
                 <input 
                     className='box'
                     name='name'
-                    id={2}
+                    id={id + 'box2'}
                     value={this.state.boxes[2]}
                     onChange={() => this.handleChange()}
-                    onClick={() => this.updateBoxesState(2)}
+                    onClick={() => this.updateBoxesState(2, id + 'box2')}
                 />
                 {/*Box 3*/}
                 <input 
                     className='box'
                     name='name'
-                    id={3}
+                    id={id + 'box3'}
                     value={this.state.boxes[3]}
                     onChange={() => this.handleChange()}
-                    onClick={() => this.updateBoxesState(3)}
+                    onClick={() => this.updateBoxesState(3, id + 'box3')}
                 />
                 {/*Box 4*/}
                 <input 
                     className='box'
                     name='name'
-                    id={4}
+                    id={id + 'box4'}
                     value={this.state.boxes[4]}
                     onChange={() => this.handleChange()}
-                    onClick={() => this.updateBoxesState(4)}
+                    onClick={() => this.updateBoxesState(4, id + 'box4')}
                 />
 
                 <button onClick={() => this.submit()}>submit</button>

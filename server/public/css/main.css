@@ -296,50 +296,19 @@ textarea:focus {
 ul {
   list-style-type: none;
 }
-/*---------- Job Row ----------*/
-#tasksTable tr:nth-child(even) {
-  background-color: #f2f2f2;
+/*---------- Box Row ----------*/
+.boxRow {
+  height: 50px;
+  margin: 0, 10px;
 }
 
-#tasksTable tr:hover {
-  background-color: #ddd;
-  cursor: pointer;
-}
-
-#tasksTable {
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-}
-
-#tasksTable td,
-#jobs th {
-  border-bottom: 1px solid firebrick;
-  padding: 8px;
-}
-
-#tasksTable th {
-  padding: 8px;
-  text-align: left;
-  background-color: #ec2027;
-  color: white;
-}
-
-#tasksTable a {
-  text-decoration: none;
-  color: black;
-}
-
-table {
-  border-collapse: collapse;
-  margin: 25px auto 25px auto;
-}
 /*---------- Task ----------*/
 .taskName {
   display: inline-flex;
   font-size: 23px;
   font-weight: 800;
   color: black;
+  width: 25%;
 }
 
 /*---------- Box ----------*/
