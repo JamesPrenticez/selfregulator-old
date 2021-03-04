@@ -62,12 +62,10 @@ router.patch('/api/v1/tasks/:id', (req, res) => {
 })
 
 //UPDATE Boxes
-router.patch('/api/v1/tasks/:id', (req, res) => {
+router.patch('/api/v1/boxes/:id', (req, res) => {
   let {id} = req.params
-  let {boxes} = req.body.boxes
-  console.log(boxes)
   if (!id) return res.status(400).send('no id specified')
-  db.updateBoxes(Number(id), boxes)
+  db.updateBoxes(Number(id), req.body.boxes)
     .then(recordsUpdated => {
       res.sendStatus(200)
     })

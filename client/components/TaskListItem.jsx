@@ -40,7 +40,7 @@ class TaskListItem extends React.Component {
     submit = () =>{
         let {id} = this.props.task
         let {boxes} = this.state
-            editBoxes(id, JSON.stringify(boxes))
+            editBoxes(id, boxes)
             .then(() => {
                 this.props.dispatch(updateBoxes(id, boxes))
                 if (this.props.onEscape) this.props.onEscape()
