@@ -6,10 +6,11 @@ import {FaMinusCircle} from 'react-icons/fa'
 import {removeTask} from '../actions'
 import {deleteTask} from '../api'
 
+import { updateTask } from '../actions'
+import { editTask } from '../api'
+
 import {updateBoxes} from '../actions'
 import {editBoxes} from '../api'
-
-import TaskEdit from './TaskEdit'
 
 const yellow = '#FEDD01'
 const green = '#39ff14'
@@ -33,7 +34,13 @@ class TaskListItem extends React.Component {
         }
     }
 
-    handleChange = (event) => {    
+    handleChangeName = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleChangeBoxes = (event) => {    
         this.setState({
             boxes: event.target.value
         })
@@ -73,25 +80,45 @@ class TaskListItem extends React.Component {
             } else document.getElementById(id).style.backgroundColor='black';
     }
 
-    submit = () =>{
+    submitTaskName = () =>{
+        let {id} = this.props.task
+        let {name} = this.state 
+        editTask(id, name)
+            .then(() => {
+                this.props.dispatch(updateTask(id, name))
+                if (this.props.onEscape) this.props.onEscape()
+            })
+        this.setState({
+            editing: false
+        })
+        setTimeout(alert('submit success'),10)
+        //Definatly an improvment to be had here https://codepen.io/lancebush/pen/zdxLE
+    }
+
+    submitBoxes = () =>{
         let {id} = this.props.task
         let {boxes} = this.state
-            editBoxes(id, boxes)
+        editBoxes(id, boxes)
             .then(() => {
                 this.props.dispatch(updateBoxes(id, boxes))
                 if (this.props.onEscape) this.props.onEscape()
             })
-        console.log('submit success')
-        }
+        this.setState({
+            editing: false
+        })
+        setTimeout(alert('submit success'),10)
+        //Definatly an improvment to be had here https://codepen.io/lancebush/pen/zdxLE
+    }
+
 
     listenForKeys = (event) => {
-        switch(event.keyCode){
+        switch(event.keyCode) {
             case 13:
-                this.submit()
+                this.submitTaskName()
                 break
-
+            
             case 27:
-                if (this.props.onEscape) this.props.onEscape()
+                this.hideEditForm()
                 break
         }
     }
@@ -106,30 +133,43 @@ class TaskListItem extends React.Component {
 
     editTask = () => {
         this.setState({
-            showControls: false,
             editing: true
         })
     }
 
     hideEditForm = () => {
         this.setState({
-            showControls: true,
             editing: false,
+        })
+        // Reset this.state.name back to original before the user entered the TaskNameInputField thus giving them an option to use 'esc' key to exit with out saving changed to DB
+        this.setState({
+            name: document.getElementById('TaskNameInputField').value = this.props.task.name
         })
     }
 
     render(){
     const {id} = this.props.task
-    const {task} = this.props
     const {editing} = this.state
+    const submitStyle = {color: 'green', marginLeft: '7px', cursor: 'pointer'}
     const deleteStyle = {color: 'red', marginLeft: '7px', cursor: 'pointer'}
         return(
             <div className='row'>
 
-                { editing ? <TaskEdit task={task} onEscape={this.hideEditForm}/> :
-
-                <>
-                <div className='taskName' onClick={this.editTask}>{this.state.name}</div>
+                { editing ?  
+            //If EDITING is true... Show Task Name Input Field and Boxes
+            <>
+                {/*Task Name Input Field*/}
+                <input 
+                    id='TaskNameInputField'
+                    className='TaskName'
+                    type='text'
+                    name='name'
+                    autoFocus={true}
+                    onBlur={() => this.hideEditForm(), () => this.submitTaskName()}
+                    value={this.state.name}
+                    onKeyDown={(event) => this.listenForKeys(event)}
+                    onChange={(event) => this.handleChangeName(event)}
+                />
 
                 {/*Box 0*/}
                 <input 
@@ -137,7 +177,7 @@ class TaskListItem extends React.Component {
                     name='name'
                     id={id  + 'box0'}
                     value={this.state.boxes[0]}
-                    onChange={() => this.handleChange()}
+                    onChange={(event) => this.handleChangeBoxes(event)}
                     onClick={() => this.updateBoxesState(0, id + 'box0')}
                 />
                 {/*Box 1*/}
@@ -146,7 +186,7 @@ class TaskListItem extends React.Component {
                     name='name'
                     id={id + 'box1'}
                     value={this.state.boxes[1]}
-                    onChange={() => this.handleChange()}
+                    onChange={(event) => this.handleChange(event)}
                     onClick={() => this.updateBoxesState(1, id + 'box1')}
                 />
                 {/*Box 2*/}
@@ -155,7 +195,7 @@ class TaskListItem extends React.Component {
                     name='name'
                     id={id + 'box2'}
                     value={this.state.boxes[2]}
-                    onChange={() => this.handleChange()}
+                    onChange={(event) => this.handleChange(event)}
                     onClick={() => this.updateBoxesState(2, id + 'box2')}
                 />
                 {/*Box 3*/}
@@ -164,7 +204,7 @@ class TaskListItem extends React.Component {
                     name='name'
                     id={id + 'box3'}
                     value={this.state.boxes[3]}
-                    onChange={() => this.handleChange()}
+                    onChange={(event) => this.handleChange(event)}
                     onClick={() => this.updateBoxesState(3, id + 'box3')}
                 />
                 {/*Box 4*/}
@@ -173,18 +213,79 @@ class TaskListItem extends React.Component {
                     name='name'
                     id={id + 'box4'}
                     value={this.state.boxes[4]}
-                    onChange={() => this.handleChange()}
+                    onChange={(event) => this.handleChange(event)}
                     onClick={() => this.updateBoxesState(4, id + 'box4')}
                 />
 
-                <button onClick={() => this.submit()}>submit</button>
+                <button onClick={() => this.submitBoxes()}>submit</button>
 
                 <FaMinusCircle
                     style={deleteStyle}
                     onClick={() => this.deleteTask()}
                     role='button'
                 />
+        </>
 
+
+                //Else If EDITING is False ... show Name and Boxes
+                :
+                <>
+                {/*Task Name*/}
+                <div className='taskName' onClick={this.editTask}>{this.state.name}</div>
+
+                {/*Box 0*/}
+                <input 
+                    className='box'
+                    name='name'
+                    id={id  + 'box0'}
+                    value={this.state.boxes[0]}
+                    onChange={(event) => this.handleChange(event)}
+                    onClick={() => this.updateBoxesState(0, id + 'box0')}
+                />
+                {/*Box 1*/}
+                <input 
+                    className='box'
+                    name='name'
+                    id={id + 'box1'}
+                    value={this.state.boxes[1]}
+                    onChange={(event) => this.handleChange(event)}
+                    onClick={() => this.updateBoxesState(1, id + 'box1')}
+                />
+                {/*Box 2*/}
+                <input 
+                    className='box'
+                    name='name'
+                    id={id + 'box2'}
+                    value={this.state.boxes[2]}
+                    onChange={(event) => this.handleChange(event)}
+                    onClick={() => this.updateBoxesState(2, id + 'box2')}
+                />
+                {/*Box 3*/}
+                <input 
+                    className='box'
+                    name='name'
+                    id={id + 'box3'}
+                    value={this.state.boxes[3]}
+                    onChange={(event) => this.handleChange(event)}
+                    onClick={() => this.updateBoxesState(3, id + 'box3')}
+                />
+                {/*Box 4*/}
+                <input 
+                    className='box'
+                    name='name'
+                    id={id + 'box4'}
+                    value={this.state.boxes[4]}
+                    onChange={(event) => this.handleChange(event)}
+                    onClick={() => this.updateBoxesState(4, id + 'box4')}
+                />
+
+                <button onClick={() => this.submitBoxes()}>submit</button>
+
+                <FaMinusCircle
+                    style={deleteStyle}
+                    onClick={() => this.deleteTask()}
+                    role='button'
+                />
                 </>
                 }
             </div>

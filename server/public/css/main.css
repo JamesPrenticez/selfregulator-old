@@ -302,8 +302,22 @@ ul {
   margin: 0, 10px;
 }
 
-/*---------- Task ----------*/
+/*---------- TaskName ----------*/
 .taskName {
+  display: inline-flex;
+  font-size: 23px;
+  font-weight: 800;
+  color: black;
+  width: 25%;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+}
+
+/*---------- TaskName Input----------*/
+input {
+  height: 100%;
   display: inline-flex;
   font-size: 23px;
   font-weight: 800;
@@ -311,9 +325,28 @@ ul {
   width: 25%;
 }
 
+input[type="text"],
+textarea {
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid var(--offBlack);
+  box-shadow: 0 0 5px var(--offBlack);
+  border-radius: 3px;
+}
+
+/* input[type="text"]:focus,
+textarea:focus {
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #ec2027;
+} */
 /*---------- Box ----------*/
 
 .box {
+  font-size: 12px;
+  font-weight: 400;
   background-color: beige;
   display: inline-flex;
   height: 50px;
