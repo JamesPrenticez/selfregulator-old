@@ -9,6 +9,9 @@ export default class CourseContainer extends React.Component {
             <>
                 <div className="courseContainer">
                 <TaskList/>
+                <br />
+                <hr />
+                <br />
                 <TaskAdd/>
                 </div>
             </>
